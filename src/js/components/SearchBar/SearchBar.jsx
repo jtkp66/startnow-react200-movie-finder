@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchMovie } from '../actions/index';
+import { fetchMovie } from './searchBarActions';
 
-class MovieSearchContainer extends Component {
+export default class SearchBar extends Component {
     constructor(props) {
         super(props);
 
@@ -11,6 +11,7 @@ class MovieSearchContainer extends Component {
 
         this.onInputChange = this.onInputChange.bind(this);
         this.onFormSubmit = this.onFormSubmit.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     onInputChange(event) {
@@ -20,9 +21,14 @@ class MovieSearchContainer extends Component {
 
     onFormSubmit(event) {
         event.preventDefault();
-        //we need to fetch weather data
-        this.props.fetchMovie(this.state.term)
+        const {dispatch} = this.props;
+        dispatch(fetchMovie(this.state.term));
         this.setState({ term: '' });
+    }
+
+    handleClick(event) {
+        const { dispatch, movieData } = this.props;
+        dispatch(fetchMovie(this.state.value))
     }
 
     render() {
@@ -40,31 +46,19 @@ class MovieSearchContainer extends Component {
                         onChange={this.onInputChange}
                         placeholder="Enter Movie Title Here"
                         className="form-control mb-5"
-                        value={this.props.term}
+                        value={this.state.term}
                     />
                     <span className='input-group-btn'>
                         <button type="submit" className="btn btn-secondary mb-5">Search</button>
                     </span>
                 </form>
-
-                <div>
-                    <div className="row">
-                        {/* <img
-                            src={movie.data.Poster}
-                            alt={`${movie.data.Title} Poster`}
-                            className='movie-poster'
-                        /> */}
-                        <div className="col card text-center">Movie 1</div>
-                        <div className="col card text-center">Movie 2</div>
-                    </div>
-                </div>
             </div>
         );
     }
 }
 
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ fetchMovie }, dispatch);
-}
+// function mapDispatchToProps(dispatch) {
+//     return bindActionCreators({ fetchMovie }, dispatch);
+// }
 
-export default connect(null, mapDispatchToProps)(MovieSearchContainer);
+// export default connect(null, mapDispatchToProps)(SearchBar);

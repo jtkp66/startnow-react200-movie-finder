@@ -3,12 +3,12 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import promiseMiddleware from 'redux-promise-middleware';
-import reducers from './reducers';
+import searchBarReducer from './components/SearchBar/searchBarReducer';
 import App from './app';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const store = createStore(reducers, composeEnhancers(applyMiddleware(promiseMiddleware())));
+const store = createStore(searchBarReducer, composeEnhancers(applyMiddleware(promiseMiddleware())));
 
 render(
   <Provider store={ store }>
