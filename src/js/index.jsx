@@ -16,3 +16,31 @@ render(
   </Provider>,
   document.getElementById('root')
 );
+
+//all routes go in top level index.js
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// import { Provider } from 'react-redux';
+// import { createStore, applyMiddleware } from 'redux';
+// import { BrowserRouter, Route, Switch } from 'react-router-dom';
+// import promise from 'redux-promise';
+
+// import searchBarReducers from './components/SearchBar/searchBarReducer';
+// import SearchBar from './components/SearchBar/SearchBar';
+// import PostsShow from './components/MovieDetail/MovieDetail';
+
+// const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
+
+// ReactDOM.render(
+//   <Provider store={createStoreWithMiddleware(reducers)}>
+//     <BrowserRouter>
+//       <div>
+//         <Switch>
+//           {/* <Route path="/" component={MovieInfo} /> */}
+//           <Route path="/movie/:id" component={MovieDetail} />
+//           <Route path="/" component={SearchBar} />
+//         </Switch>
+//       </div>
+//     </BrowserRouter>
+//   </Provider>
+//   , document.querySelector('.container'));

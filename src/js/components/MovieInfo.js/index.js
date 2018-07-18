@@ -5,7 +5,7 @@ import MovieInfo from './MovieInfo';
 // that's passed to the props of the component.
 function mapStoreToProps(store) {
   return {
-    movieData: store.movieData.apiData,
+    movieData: store.movieData,
     test: 'hello'
   };
 }

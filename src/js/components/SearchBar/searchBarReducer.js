@@ -1,11 +1,8 @@
 // import moment from 'moment';
-
 const defaultState = {
-    apiData: {},
-    lineItems:[]
+    movieData: {},
+    lineItems: []
 }
-
-
 
 export default function (state = defaultState, action) {
     // console.log('Action received', action );
@@ -13,18 +10,15 @@ export default function (state = defaultState, action) {
         case 'FETCH_MOVIE_FULFILLED': //the action type we care about
             //return state.concat([action.payload.data]);
             //same as 
-            const obj = {name : action.payload.data.name};                  
+            const obj = { title: action.payload.data.name };
             return {
                 ...state,
-                apiData: action.payload.data,
-                lineItems: [...state.lineItems, obj] 
-                // lineItems: [...state.lineItems, obj]
+                movieData: action.payload.data,
+                lineItems: [...state.lineItems, obj]
             }; //make new array put action.data into ...state(current state of array)
-            // add on to existing state. returning a new version or 
-            // or instance to state, instead of mutating it.[city, city, city]
+        // add on to existing state. returning a new version or 
+        // or instance to state, instead of mutating it.[city, city, city]
     }
-
 
     return state;
 }
-  
