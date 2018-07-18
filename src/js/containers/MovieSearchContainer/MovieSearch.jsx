@@ -74,24 +74,29 @@ class MovieSearch extends React.Component {
                         <p className='page-description'>Powered by Hugs</p>
                     </div>
                 </div>
-                <form onSubmit={this.onFormSubmit} className="input-group">
+                <hr />
+                <hr />
+                <form onSubmit={this.onFormSubmit} className="input-group mb-3 input-group-lg">
                     <input
+                    type="text"
+                    name="search"
                         onChange={this.handleSearch}
-                        placeholder="Enter Movie Title Here"
-                        className="form-control mb-5 border border-danger"
+                        placeholder="Enter Movie Title"
+                        className=" mb-5 bg-light border border-danger"
                         value={searchTerm}
                     />
                     <span className='input-group-btn'>
                         <button type="submit" className="btn btn-dark mb-5 border border-danger" onClick={this.getMovies}>Search</button>
                     </span>
                 </form>
+                
                 <div className='row mx-0'>
                     {movieList.map(movie => (
-                        <div key={movie.imdbID} className='col-4 card border-secondary px-1'>
+                        <div key={movie.imdbID} className='col-4 card border-danger px-4'>
                             {movie.Poster === 'N/A' ? (
-                                <img className='card-img-top' src='https://d32qys9a6wm9no.cloudfront.net/images/movies/poster/500x735.png' alt='placeholder' />
-                            ) : (<img className='card-img-top' src={movie.Poster} alt='placeholder' />)}
-                            <div className='card-body text-center'>
+                                <img className='card-img-top p-3 bg-light text-dark border-danger' src='https://d32qys9a6wm9no.cloudfront.net/images/movies/poster/500x735.png' alt='placeholder' />
+                            ) : (<img className='card-img-top p-3 bg-light text-dark' src={movie.Poster} alt='placeholder' />)}
+                            <div className='card-body bg-light text-center'>
                                 <div>
                                     <h5>Title: <strong>{movie.Title}</strong></h5>
                                     <p>Year: <strong>{movie.Year}</strong></p>

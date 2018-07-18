@@ -2,6 +2,10 @@
 //   background: #ECE9E6;
 //   background: -webkit-linear-gradient(to right, rgb(155, 13, 13), rgb(153, 83, 12));
 // }
+h1 {
+  text-decoration: underline;
+  text-decoration-color:#4b4545;
+}
 
 body {
   background: #556270;  /* fallback for old browsers */
@@ -15,4 +19,22 @@ background: linear-gradient(to right, rgb(230, 221, 221), #556270); /* W3C, IE 1
   background-image: url(https://banner2.kisspng.com/20180326/qge/kisspng-desktop-wallpaper-black-and-white-black-red-white-black-background-5ab8a2d3ceb4e1.7033056615220497478467.jpg);
   background-size: cover;
   color: white;
+}
+input[type=text] {
+  width: 130px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-image: url('searchicon.png');
+  background-position: 10px 10px; 
+  background-repeat: no-repeat;
+  // padding: 12px 20px 12px 40px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+  width: 92%;
 }
