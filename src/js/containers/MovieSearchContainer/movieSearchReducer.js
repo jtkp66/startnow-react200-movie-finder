@@ -1,6 +1,6 @@
 const defaultState = {
     movieList: [],
-    movieInfo: {},
+    movieDetails: {},
     searchTerm: ''
 };
 
@@ -20,10 +20,10 @@ export default function MovieSearchReducer(state = defaultState, action) {
                 movieList: payload
             };
         }
-        case 'MOVIE_INFO': {
+        case 'MOVIE_DETAILS': {
             return {
                 ...state,
-                movieInfo: payload
+                movieDetails: payload
             };
         }
         default: {

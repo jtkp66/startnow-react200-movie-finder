@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { updateSearch, addMovie, movieInfo } from './MovieSearchActions';
+import { updateSearch, addMovie, movieDetails } from './MovieSearchActions';
 
 const axios = require('axios');
 
@@ -13,7 +13,7 @@ class MovieSearch extends React.Component {
         this.onFormSubmit = this.onFormSubmit.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
         this.getMovies = this.getMovies.bind(this);
-        this.selectMovie = this.selectMovie.bind(this);
+        this.moreInformation = this.moreInformation.bind(this);
     }
 
     onFormSubmit(event) {
@@ -29,7 +29,6 @@ class MovieSearch extends React.Component {
     getMovies() {
         const { dispatch, searchTerm } = this.props;
         const API_KEY = 'f4ed2f4b';
-        // const url = `http://www.omdbapi.com/?apikey=${API_KEY}`
         const url = `https://www.omdbapi.com/?s=${searchTerm}&apikey=${API_KEY}&type=movie`;
 
         axios
@@ -40,14 +39,14 @@ class MovieSearch extends React.Component {
                 if (list.Response === 'True') {
                     dispatch(addMovie(list.Search));
                 } else {
-                    alert('No Search Results');
+                    alert('No Results found. Check your Spelling.');
                 }
             })
             .catch((err) => {
                 console.log(err);
             });
     }
-    selectMovie(e) {
+    moreInformation(e) {
         const { dispatch } = this.props;
 
         const url = `https://www.omdbapi.com/?i=${event.target.id}&apikey=f4ed2f4b`;
@@ -57,7 +56,7 @@ class MovieSearch extends React.Component {
             .then((result) => {
                 const movie = result.data;
                 console.log(movie);
-                dispatch(movieInfo(movie));
+                dispatch(movieDetails(movie));
             })
             .catch((err) => {
                 console.log(err);
@@ -78,8 +77,8 @@ class MovieSearch extends React.Component {
                 <hr />
                 <form onSubmit={this.onFormSubmit} className="input-group mb-3 input-group-lg">
                     <input
-                    type="text"
-                    name="search"
+                        type="text"
+                        name="search"
                         onChange={this.handleSearch}
                         placeholder="Enter Movie Title"
                         className=" mb-5 bg-light border border-danger"
@@ -89,7 +88,7 @@ class MovieSearch extends React.Component {
                         <button type="submit" className="btn btn-dark mb-5 border border-danger" onClick={this.getMovies}>Search</button>
                     </span>
                 </form>
-                
+
                 <div className='row mx-0'>
                     {movieList.map(movie => (
                         <div key={movie.imdbID} className='col-4 card border-danger px-4'>
@@ -103,7 +102,7 @@ class MovieSearch extends React.Component {
                                 </div>
                                 <hr />
                                 <a href={`/#/movie/${movie.imdbID}`}>
-                                    <button id={movie.imdbID} onClick={this.selectMovie} className="btn btn-secondary btn-lg btn-block border border-danger">More Information</button>
+                                    <button id={movie.imdbID} onClick={this.moreInformation} className="btn btn-secondary btn-lg btn-block border border-danger">More Information</button>
                                 </a>
                             </div>
                         </div>

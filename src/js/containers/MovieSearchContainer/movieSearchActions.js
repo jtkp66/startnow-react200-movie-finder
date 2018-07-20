@@ -1,4 +1,4 @@
-updateSearch, addMovie, movieInfo;
+updateSearch, addMovie, movieDetails;
 
 export function updateSearch(searchTerm) {
     return {
@@ -14,9 +14,9 @@ export function addMovie(movie) {
     };
 }
 
-export function movieInfo(movie) {
+export function movieDetails(movie) {
     return {
-        type: 'MOVIE_INFO',
+        type: 'MOVIE_DETAILS',
         payload: movie
     };
 }
